@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="basic-util" />
+        <module name="pinggou-config-server" />
         <module name="pinggou-eureka-server" />
         <module name="pinggou-plat-interface" />
         <module name="pinggou-plat-service" />
@@ -18,6 +19,7 @@
       <module name="basic-parent" target="1.8" />
       <module name="basic-util" target="1.8" />
       <module name="pinggou" target="1.8" />
+      <module name="pinggou-config-server" target="1.8" />
       <module name="pinggou-eureka-server" target="1.8" />
       <module name="pinggou-parent" target="1.8" />
       <module name="pinggou-plat-interface" target="1.8" />

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-parent.iml" filepath="$PROJECT_DIR$/basic-parent/basic-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-util/basic-util.iml" filepath="$PROJECT_DIR$/basic-parent/basic-util/basic-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" filepath="$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-eureka-server/pinggou-eureka-server.iml" filepath="$PROJECT_DIR$/pinggou-eureka-server/pinggou-eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-parent.iml" filepath="$PROJECT_DIR$/pinggou-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-interface/pinggou-plat-interface.iml" filepath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-interface/pinggou-plat-interface.iml" />

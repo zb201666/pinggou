@@ -13,6 +13,7 @@
         <module>pinggou-zuul-gateway</module>
         <module>basic-parent</module>
         <module>pinggou-plat-parent</module>
+        <module>pinggou-config-server</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
