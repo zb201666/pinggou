@@ -1,0 +1,16 @@
+spring:
+  application:
+    #服务名，由于本身就是一个eureka服务器，不需要将服务注册到eureka服务器，所以可以不写服务名
+    name: PINGGOU-EUREKA
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #表示不将服务注册到eureka
+    registerWithEureka: false
+    #表示不从eureka上拉取服务信息
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #单机配置
