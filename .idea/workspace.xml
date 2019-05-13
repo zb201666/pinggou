@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a523d15d-d995-47ce-be80-43bb0decf86b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_javaewah_JavaEWAH_1_1_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jsch_0_1_54.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jcraft_jzlib_1_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_4_11_0_201803080745_r.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jgit_org_eclipse_jgit_http_apache_4_11_0_201803080745_r.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_config_client_2_0_3_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_config_server_2_0_3_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_config_2_0_3_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-config-server/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-config-server/src/main/java/cn/itsource/pinggou/ConfigApplication.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/bootstrap.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/resources/bootstrap.yml" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pinggou-plat-service.iml" afterPath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pinggou-plat-service.iml" />
-      <change beforePath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pom.xml" afterPath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/application.yml" />
-      <change beforePath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/target/classes/cn/itsource/pinggou/controller/LoginController.class" afterPath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/target/classes/cn/itsource/pinggou/controller/LoginController.class" />
-      <change beforePath="$PROJECT_DIR$/pinggou-zuul-gateway/pinggou-zuul-gateway.iml" afterPath="$PROJECT_DIR$/pinggou-zuul-gateway/pinggou-zuul-gateway.iml" />
-      <change beforePath="$PROJECT_DIR$/pinggou-zuul-gateway/pom.xml" afterPath="$PROJECT_DIR$/pinggou-zuul-gateway/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/resources/application.yml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,28 +35,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/bootstrap.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -127,13 +80,13 @@
         <option value="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/java/cn/itsource/pinggou/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/pinggou-config-server/pom.xml" />
         <option value="$PROJECT_DIR$/pinggou-config-server/src/main/java/cn/itsource/pinggou/ConfigApplication.java" />
-        <option value="$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/pinggou-zuul-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/resources/bootstrap.yml" />
         <option value="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pom.xml" />
         <option value="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/bootstrap.yml" />
         <option value="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml" />
       </list>
     </option>
   </component>
@@ -205,110 +158,6 @@
             <path>
               <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
               <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-config-server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-config-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-config-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-config-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-config-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-config-server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-parent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-plat-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-zuul-gateway" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-zuul-gateway" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-zuul-gateway" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="pinggou-zuul-gateway" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -493,12 +342,12 @@
       <workItem from="1557557978085" duration="2192000" />
       <workItem from="1557564538905" duration="11933000" />
       <workItem from="1557621673917" duration="803000" />
-      <workItem from="1557657371681" duration="2621000" />
+      <workItem from="1557657371681" duration="3804000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17549000" />
+    <option name="totallyTimeSpent" value="18732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -766,18 +615,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/src/main/resources/bootstrap.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pinggou-config-server/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
           <folding />
         </state>
       </provider>

@@ -14,11 +14,17 @@ spring:
   application:
     #服务名
     name: PINGGOU-CONFIG-SERVER
+  #配置使用本地的配置文件，如果使用github则不需要该配置
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        #github路径
-        git:
-          uri: https://github.com/zb201666/pinggou-springcloud-config.git
-          username: zb201666
-          password: 196691zb
+        #配置本地配置文件的路径
+        native:
+          search-locations: E:/git-project/pinggou-springcloud-config
+#        #github路径
+#        git:
+#          uri: https://github.com/zb201666/pinggou-springcloud-config.git
+#          username: zb201666
+#          password: 196691zb
