@@ -16,6 +16,13 @@
             <artifactId>basic-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!--为了让mybatisplus的注解编译通过，只添加这个依赖就行了，不要添加其他mybatisplus依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
     </dependencies>
 
 
