@@ -2,45 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a523d15d-d995-47ce-be80-43bb0decf86b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_generator_3_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_engine_core_2_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-core/basic-core.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-core/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-core/src/main/java/cn/itsource/pinggou/query/BaseQuery.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-generator/basic-generator.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-generator/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-generator/src/main/java/cn/itsource/basic/generoter/CodeGen.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-generator/src/main/resources/mybatis-plus-product.properties" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-generator/src/main/resources/templates/controller.java.vm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-generator/src/main/resources/templates/query.java.vm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/BitStatesUtils.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/ClassUtils.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/CodeGenerateUtils.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/GlobalSetting.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/LetterUtil.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/ProductStateConsts.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/PropertiesHelper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/StrUtils.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/encrypt/DES.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/encrypt/MD5.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/pinggou-product-interface.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-parent.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/pinggou-product-service.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/ProductApplication.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/config/MybatisPlusConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/config/Swagger2.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/resources/application.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/resources/bootstrap.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pinggou-product-parent/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/basic-parent/pom.xml" afterPath="$PROJECT_DIR$/basic-parent/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/domain/ProductType.java" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/domain/ProductType.java" />
+      <change beforePath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductTypeController.java" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductTypeController.java" />
+      <change beforePath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/IProductTypeService.java" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/IProductTypeService.java" />
+      <change beforePath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductTypeServiceImpl.java" afterPath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductTypeServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -79,60 +45,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="BrandController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/BrandController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="82" column="60" lean-forward="true" selection-start-line="82" selection-start-column="60" selection-end-line="82" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IBrandService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/IBrandService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BrandServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/BrandServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BrandMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/mapper/BrandMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BrandMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/resources/cn/itsource/pinggou/mapper/BrandMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="11" column="62" lean-forward="true" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
-              <folding>
-                <marker date="1558013914750" expanded="true" signature="1461:1581" ph="SELECT b.*,p... t_brand" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -163,8 +76,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/java/cn/itsource/pinggou/DocumentationConfig.java" />
-        <option value="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/java/cn/itsource/pinggou/config/DocumentationConfig.java" />
         <option value="$PROJECT_DIR$/pinggou-zuul-gateway/src/main/java/cn/itsource/pinggou/config/SwaggerConfig.java" />
         <option value="$PROJECT_DIR$/pinggou-config-server/pom.xml" />
         <option value="$PROJECT_DIR$/pinggou-config-server/src/main/java/cn/itsource/pinggou/ConfigApplication.java" />
@@ -196,7 +107,6 @@
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/aigou/query/BrandQuery.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/aigou/query/ProductQuery.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/aigou/query/ProductTypeQuery.java" />
-        <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductTypeController.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductController.java" />
         <option value="$PROJECT_DIR$/basic-parent/basic-generator/src/main/java/cn/itsource/basic/generoter/CodeGen.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/query/ProductQuery.java" />
@@ -204,7 +114,6 @@
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/query/ProductTypeQuery.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/query/BrandQuery.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductTypeServiceImpl.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/ProductApplication.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/domain/Brand.java" />
         <option value="$PROJECT_DIR$/basic-parent/basic-core/src/main/java/cn/itsource/pinggou/query/BaseQuery.java" />
@@ -214,6 +123,10 @@
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/BrandServiceImpl.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/mapper/BrandMapper.java" />
         <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/resources/cn/itsource/pinggou/mapper/BrandMapper.xml" />
+        <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/domain/ProductType.java" />
+        <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductTypeController.java" />
+        <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/IProductTypeService.java" />
+        <option value="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductTypeServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -380,6 +293,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pinggou" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pinggou-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="pinggou-product-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="pinggou-product-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pinggou" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pinggou-parent" type="b2602c69:ProjectViewProjectNode" />
@@ -666,12 +590,20 @@
       <workItem from="1557794301651" duration="2881000" />
       <workItem from="1557797887729" duration="5793000" />
       <workItem from="1557967292860" duration="10764000" />
-      <workItem from="1558007564493" duration="3663000" />
+      <workItem from="1558007564493" duration="8358000" />
     </task>
+    <task id="LOCAL-00001" summary="修改商品品牌管理">
+      <created>1558014832300</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558014832300</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46415000" />
+    <option name="totallyTimeSpent" value="51110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -782,25 +714,15 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="修改商品品牌管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改商品品牌管理" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/ProductStateConsts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/PropertiesHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basic-parent/basic-util/src/main/java/cn/itsource/pinggou/util/StrUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1369">
@@ -895,14 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/config/MybatisPlusConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/config/Swagger2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
@@ -967,14 +881,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/aigou/query/BrandQuery.java" />
-    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductTypeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="41" lean-forward="false" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -1032,13 +938,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
           <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductTypeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="19" column="66" lean-forward="false" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,11 +1016,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/resources/cn/itsource/pinggou/mapper/BrandMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
+        <state relative-caret-position="-238">
           <caret line="11" column="62" lean-forward="true" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
           <folding>
             <marker date="1558013914750" expanded="true" signature="1461:1581" ph="SELECT b.*,p... t_brand" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/src/main/java/cn/itsource/pinggou/domain/ProductType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2378">
+          <caret line="82" column="66" lean-forward="false" selection-start-line="82" selection-start-column="66" selection-end-line="82" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/config/MybatisPlusConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/controller/ProductTypeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="96" column="42" lean-forward="false" selection-start-line="96" selection-start-column="42" selection-end-line="96" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/IProductTypeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/src/main/java/cn/itsource/pinggou/service/impl/ProductTypeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

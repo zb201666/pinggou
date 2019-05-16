@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -76,6 +78,9 @@ private static final long serialVersionUID=1L;
     private String seoKeywords;
 
     private Long typeTemplateId;
+
+    @TableField(exist = false)
+    private List<ProductType> children = new ArrayList<ProductType>();
 
 
     public Long getId() {
@@ -187,22 +192,31 @@ private static final long serialVersionUID=1L;
         return this.id;
     }
 
+    public List<ProductType> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<ProductType> children) {
+        this.children = children;
+    }
+
     @Override
     public String toString() {
         return "ProductType{" +
-        "id=" + id +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        ", name=" + name +
-        ", pid=" + pid +
-        ", logo=" + logo +
-        ", description=" + description +
-        ", sortIndex=" + sortIndex +
-        ", path=" + path +
-        ", totalCount=" + totalCount +
-        ", seoTitle=" + seoTitle +
-        ", seoKeywords=" + seoKeywords +
-        ", typeTemplateId=" + typeTemplateId +
-        "}";
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", name='" + name + '\'' +
+                ", pid=" + pid +
+                ", logo='" + logo + '\'' +
+                ", description='" + description + '\'' +
+                ", sortIndex=" + sortIndex +
+                ", path='" + path + '\'' +
+                ", totalCount=" + totalCount +
+                ", seoTitle='" + seoTitle + '\'' +
+                ", seoKeywords='" + seoKeywords + '\'' +
+                ", typeTemplateId=" + typeTemplateId +
+                ", children=" + children +
+                '}';
     }
 }

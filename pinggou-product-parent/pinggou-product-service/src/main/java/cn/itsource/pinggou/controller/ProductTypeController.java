@@ -83,4 +83,17 @@ public class ProductTypeController {
         IPage<ProductType> productTypeIPage = productTypeService.page(new Page<>(query.getPage(), query.getSize()));
         return new PageList<>(productTypeIPage.getTotal(),productTypeIPage.getRecords());
     }
+
+    /**
+     * @author zb
+     * @description 加载树形结构
+     * @date 2019/5/16
+     * @name loadTree
+     * @param
+     * @return java.util.List<cn.itsource.pinggou.domain.ProductType>
+     */
+    @GetMapping("/productType/tree")
+    public List<ProductType> loadTree(){
+        return productTypeService.loadTree();
+    }
 }
