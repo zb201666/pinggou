@@ -9,12 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>basic-parent</artifactId>
+    <artifactId>pinggou-product-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>basic-util</module>
-        <module>basic-core</module>
-        <module>basic-generator</module>
+        <module>pinggou-product-interface</module>
+        <module>pinggou-product-service</module>
     </modules>
 
 

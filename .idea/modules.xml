@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-core/basic-core.iml" filepath="$PROJECT_DIR$/basic-parent/basic-core/basic-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-generator/basic-generator.iml" filepath="$PROJECT_DIR$/basic-parent/basic-generator/basic-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-parent.iml" filepath="$PROJECT_DIR$/basic-parent/basic-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-util/basic-util.iml" filepath="$PROJECT_DIR$/basic-parent/basic-util/basic-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" filepath="$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" />
@@ -10,6 +12,9 @@
       <module fileurl="file://$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-interface/pinggou-plat-interface.iml" filepath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-interface/pinggou-plat-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-parent.iml" filepath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pinggou-plat-service.iml" filepath="$PROJECT_DIR$/pinggou-plat-parent/pinggou-plat-service/pinggou-plat-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/pinggou-product-interface.iml" filepath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-interface/pinggou-product-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-parent.iml" filepath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/pinggou-product-service.iml" filepath="$PROJECT_DIR$/pinggou-product-parent/pinggou-product-service/pinggou-product-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-zuul-gateway/pinggou-zuul-gateway.iml" filepath="$PROJECT_DIR$/pinggou-zuul-gateway/pinggou-zuul-gateway.iml" />
     </modules>
   </component>

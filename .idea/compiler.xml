@@ -6,25 +6,41 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="basic-core" />
+        <module name="basic-generator" />
         <module name="basic-util" />
         <module name="pinggou-config-server" />
         <module name="pinggou-eureka-server" />
         <module name="pinggou-plat-interface" />
         <module name="pinggou-plat-service" />
+        <module name="pinggou-product-interface" />
+        <module name="pinggou-product-service" />
         <module name="pinggou-zuul-gateway" />
         <module name="pinggou-zuul-server" />
       </profile>
+      <profile name="Annotation profile for pinggou-parent" enabled="true">
+        <sourceOutputDir name="../../pinggou-generator/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../pinggou-generator/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="pinggou-generator" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="basic-core" target="1.8" />
+      <module name="basic-generator" target="1.8" />
       <module name="basic-parent" target="1.8" />
       <module name="basic-util" target="1.8" />
       <module name="pinggou" target="1.8" />
       <module name="pinggou-config-server" target="1.8" />
       <module name="pinggou-eureka-server" target="1.8" />
+      <module name="pinggou-generator" target="1.8" />
       <module name="pinggou-parent" target="1.8" />
       <module name="pinggou-plat-interface" target="1.8" />
       <module name="pinggou-plat-parent" target="1.8" />
       <module name="pinggou-plat-service" target="1.8" />
+      <module name="pinggou-product-interface" target="1.8" />
+      <module name="pinggou-product-parent" target="1.8" />
+      <module name="pinggou-product-service" target="1.8" />
       <module name="pinggou-zuul-gateway" target="1.8" />
       <module name="pinggou-zuul-server" target="1.8" />
     </bytecodeTargetLevel>
