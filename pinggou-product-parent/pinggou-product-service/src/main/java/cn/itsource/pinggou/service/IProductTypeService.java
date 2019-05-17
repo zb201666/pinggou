@@ -24,4 +24,14 @@ public interface IProductTypeService extends IService<ProductType> {
      * @return java.util.List<cn.itsource.pinggou.domain.ProductType>
      */
     List<ProductType> loadTree();
+
+    /**
+     * @author zb
+     * @description 生成静态首页
+     * @date 2019/5/17
+     * @name generateStaticPage
+     * @param
+     * @return void
+     */
+    void generateStaticPage();
 }

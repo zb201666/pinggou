@@ -96,4 +96,23 @@ public class ProductTypeController {
     public List<ProductType> loadTree(){
         return productTypeService.loadTree();
     }
+
+    /**
+     * @author zb
+     * @description 生成静态首页
+     * @date 2019/5/17
+     * @name generateStaticPage
+     * @param
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/home")
+    public AjaxResult generateStaticPage(){
+        try {
+            productTypeService.generateStaticPage();
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("操作失败");
+        }
+    }
 }

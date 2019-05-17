@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-generator/basic-generator.iml" filepath="$PROJECT_DIR$/basic-parent/basic-generator/basic-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-parent.iml" filepath="$PROJECT_DIR$/basic-parent/basic-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basic-parent/basic-util/basic-util.iml" filepath="$PROJECT_DIR$/basic-parent/basic-util/basic-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-common-parent/pinggou-common-interface/pinggou-common-interface.iml" filepath="$PROJECT_DIR$/pinggou-common-parent/pinggou-common-interface/pinggou-common-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-common-parent/pinggou-common-parent.iml" filepath="$PROJECT_DIR$/pinggou-common-parent/pinggou-common-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinggou-common-parent/pinggou-common-service/pinggou-common-service.iml" filepath="$PROJECT_DIR$/pinggou-common-parent/pinggou-common-service/pinggou-common-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" filepath="$PROJECT_DIR$/pinggou-config-server/pinggou-config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-eureka-server/pinggou-eureka-server.iml" filepath="$PROJECT_DIR$/pinggou-eureka-server/pinggou-eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinggou-parent.iml" filepath="$PROJECT_DIR$/pinggou-parent.iml" />

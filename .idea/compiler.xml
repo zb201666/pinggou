@@ -9,6 +9,8 @@
         <module name="basic-core" />
         <module name="basic-generator" />
         <module name="basic-util" />
+        <module name="pinggou-common-interface" />
+        <module name="pinggou-common-service" />
         <module name="pinggou-config-server" />
         <module name="pinggou-eureka-server" />
         <module name="pinggou-plat-interface" />
@@ -31,6 +33,9 @@
       <module name="basic-parent" target="1.8" />
       <module name="basic-util" target="1.8" />
       <module name="pinggou" target="1.8" />
+      <module name="pinggou-common-interface" target="1.8" />
+      <module name="pinggou-common-parent" target="1.8" />
+      <module name="pinggou-common-service" target="1.8" />
       <module name="pinggou-config-server" target="1.8" />
       <module name="pinggou-eureka-server" target="1.8" />
       <module name="pinggou-generator" target="1.8" />

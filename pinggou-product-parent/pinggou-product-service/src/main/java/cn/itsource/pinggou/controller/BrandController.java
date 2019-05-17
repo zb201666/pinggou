@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,8 +27,10 @@ public class BrandController {
     public AjaxResult save(@RequestBody Brand brand){
         try {
             if(brand.getId()!=null){
+                brand.setUpdateTime(new Date().getTime());
                 brandService.updateById(brand);
             }else{
+                brand.setCreateTime(new Date().getTime());
                 brandService.save(brand);
             }
             return AjaxResult.me();
@@ -46,6 +49,26 @@ public class BrandController {
     public AjaxResult delete(@PathVariable("id") Long id){
         try {
             brandService.removeById(id);
+            return AjaxResult.me();
+        } catch (Exception e) {
+        e.printStackTrace();
+            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+        }
+    }
+
+
+    /**
+     * @author zb
+     * @description 批量删除
+     * @date 2019/5/17
+     * @name batchDelete
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @RequestMapping(value="/brand/batch/{ids}",method=RequestMethod.DELETE)
+    public AjaxResult batchDelete(@PathVariable("ids") List<Long> ids){
+        try {
+            brandService.removeByIds(ids);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();

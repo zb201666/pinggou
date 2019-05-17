@@ -15,6 +15,7 @@
         <module>pinggou-plat-parent</module>
         <module>pinggou-config-server</module>
         <module>pinggou-product-parent</module>
+        <module>pinggou-common-parent</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
