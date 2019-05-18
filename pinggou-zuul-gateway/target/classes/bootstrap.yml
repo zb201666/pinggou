@@ -20,3 +20,5 @@ spring:
         enabled: true #从eureka上面找配置服务
         service-id: pinggou-config-server #指定服务名
       #uri: http://127.0.0.1:1299 #配置服务器 单机配置
+
+

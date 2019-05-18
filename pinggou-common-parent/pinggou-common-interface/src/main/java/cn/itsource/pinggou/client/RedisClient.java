@@ -1,5 +1,6 @@
 package cn.itsource.pinggou.client;
 
+import cn.itsource.pinggou.util.AjaxResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2019/5/17
  */
 @FeignClient(value = "PINGGOU-COMMON")//标注服务提供者是谁
+//@FeignClient(value = "PINGGOU-COMMON",fallbackFactory = RedisClientFallBackFactory.class)//标注服务提供者是谁，以及返回托底数据的回调函数
 public interface RedisClient {
 
     /**
@@ -25,7 +27,7 @@ public interface RedisClient {
      * @return void
      */
     @PostMapping("/redis")
-    void set(@RequestParam("key") String key, @RequestParam("value")String value);
+    AjaxResult set(@RequestParam("key") String key, @RequestParam("value")String value);
 
     /**
      * @author zb
