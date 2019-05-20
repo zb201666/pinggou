@@ -41,6 +41,10 @@ private static final long serialVersionUID=1L;
      */
     private Long pid;
 
+    /**父级类型*/
+    @TableField(exist = false)
+    private ProductType parent;
+
     /**
      * 图标
      */
@@ -198,6 +202,14 @@ private static final long serialVersionUID=1L;
 
     public void setChildren(List<ProductType> children) {
         this.children = children;
+    }
+
+    public ProductType getParent() {
+        return parent;
+    }
+
+    public void setParent(ProductType parent) {
+        this.parent = parent;
     }
 
     @Override

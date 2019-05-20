@@ -4,6 +4,7 @@ import cn.itsource.pinggou.service.IBrandService;
 import cn.itsource.pinggou.domain.Brand;
 import cn.itsource.pinggou.query.BrandQuery;
 import cn.itsource.pinggou.util.AjaxResult;
+import cn.itsource.pinggou.util.LetterUtil;
 import cn.itsource.pinggou.util.PageList;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -27,9 +28,14 @@ public class BrandController {
     public AjaxResult save(@RequestBody Brand brand){
         try {
             if(brand.getId()!=null){
+                //设置更新时间
                 brand.setUpdateTime(new Date().getTime());
                 brandService.updateById(brand);
             }else{
+                //设置首字母
+                String firstLetter = LetterUtil.getFirstLetter(brand.getName());
+                brand.setFirstLetter(firstLetter);
+                //设置创建时间
                 brand.setCreateTime(new Date().getTime());
                 brandService.save(brand);
             }
