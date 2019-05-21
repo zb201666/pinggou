@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * <p>
@@ -27,4 +28,16 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @return com.baomidou.mybatisplus.core.metadata.IPage<cn.itsource.pinggou.domain.Product>
      */
     IPage<Product> selectByQuery(Page<Product> page, @Param("query") ProductQuery query);
+
+    /**
+     * @author zb
+     * @description 根据id修改媒体信息
+     * @date 2019/5/21
+     * @name updateMedias
+     * @param id
+     * @param medias
+     * @return void
+     */
+    @Update("update t_product set medias = #{medias} where id = #{id}")
+    void updateMedias(@Param("id") Long id, @Param("medias") String medias);
 }

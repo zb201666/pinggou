@@ -123,7 +123,6 @@ public class BrandController {
      */
     @PostMapping("/brand/updateLogo")
     public AjaxResult UpdateLogo(@RequestBody Brand brand){
-        System.out.println(brand.getLogo());
         try {
             brandService.updateLogo(brand.getId(),brand.getLogo());
             return AjaxResult.me();

@@ -1,6 +1,7 @@
 package cn.itsource.pinggou.controller;
 
 import cn.itsource.pinggou.domain.Product;
+import cn.itsource.pinggou.domain.Specification;
 import cn.itsource.pinggou.query.ProductQuery;
 import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.util.AjaxResult;
@@ -82,5 +83,58 @@ public class ProductController {
 //        IPage<Product> productIPage = productService.page(new Page<>(query.getPage(), query.getSize()));
 //        return new PageList<>(productIPage.getTotal(),productIPage.getRecords());
         return productService.selectByQuery(query);
+    }
+
+
+    /**
+     * @author zb
+     * @description 根据id修改媒体信息
+     * @date 2019/5/21
+     * @name updateMedias
+     * @param product
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/product/updateMedias")
+    public AjaxResult updateMedias(@RequestBody Product product){
+        try {
+            productService.updateMedias(product.getId(),product.getMedias());
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("更新失败！！！原因是："+e.getMessage());
+        }
+    }
+
+    /**
+     * @author zb
+     * @description 获取显示属性
+     * @date 2019/5/21
+     * @name viewProperties
+     * @param productId
+     * @return java.util.List<cn.itsource.pinggou.domain.Specification>
+     */
+    @GetMapping("/product/viewProperties/{id}")
+    public List<Specification> viewProperties(@PathVariable("id") Long productId){
+        return productService.loadViewProperties(productId);
+    }
+
+
+    /**
+     * @author zb
+     * @description 保存显示属性
+     * @date 2019/5/21
+     * @name viewProperties
+     * @param product
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/product/viewProperties")
+    public AjaxResult viewProperties(@RequestBody Product product){
+        try {
+            productService.saveViewProperties(product);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("保存失败！！！原因是："+e.getMessage());
+        }
     }
 }
