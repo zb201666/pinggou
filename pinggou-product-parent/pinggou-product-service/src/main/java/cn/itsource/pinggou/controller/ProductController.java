@@ -1,15 +1,14 @@
 package cn.itsource.pinggou.controller;
 
-import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.domain.Product;
 import cn.itsource.pinggou.query.ProductQuery;
+import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.util.AjaxResult;
 import cn.itsource.pinggou.util.PageList;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,6 +27,7 @@ public class ProductController {
             if(product.getId()!=null){
                 productService.updateById(product);
             }else{
+                product.setCreateTime(new Date().getTime());
                 productService.save(product);
             }
             return AjaxResult.me();
@@ -78,9 +78,9 @@ public class ProductController {
     * @return PageList 分页对象
     */
     @RequestMapping(value = "/product/page",method = RequestMethod.POST)
-    public PageList<Product> json(@RequestBody ProductQuery query)
-    {
-        IPage<Product> productIPage = productService.page(new Page<>(query.getPage(), query.getSize()));
-        return new PageList<>(productIPage.getTotal(),productIPage.getRecords());
+    public PageList<Product> json(@RequestBody ProductQuery query) {
+//        IPage<Product> productIPage = productService.page(new Page<>(query.getPage(), query.getSize()));
+//        return new PageList<>(productIPage.getTotal(),productIPage.getRecords());
+        return productService.selectByQuery(query);
     }
 }

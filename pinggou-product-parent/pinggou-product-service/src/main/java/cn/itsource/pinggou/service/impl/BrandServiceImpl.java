@@ -27,4 +27,9 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     public IPage<Brand> selectByQuery(Page<Brand> page, BrandQuery query) {
         return baseMapper.selectByQuery(page,query);
     }
+
+    @Override
+    public void updateLogo(Long id, String logo) {
+        baseMapper.updateLogo(id,logo);
+    }
 }

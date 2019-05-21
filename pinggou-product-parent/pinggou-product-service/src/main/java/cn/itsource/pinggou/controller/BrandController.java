@@ -112,4 +112,24 @@ public class BrandController {
         IPage<Brand> brandIPage = brandService.selectByQuery(page,query);
         return new PageList<Brand>(brandIPage.getTotal(),brandIPage.getRecords());
     }
+
+    /**
+     * @author zb
+     * @description 根据id修改logo
+     * @date 2019/5/20
+     * @name UpdateLogo
+     * @param brand
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/brand/updateLogo")
+    public AjaxResult UpdateLogo(@RequestBody Brand brand){
+        System.out.println(brand.getLogo());
+        try {
+            brandService.updateLogo(brand.getId(),brand.getLogo());
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("更新失败！！！");
+        }
+    }
 }

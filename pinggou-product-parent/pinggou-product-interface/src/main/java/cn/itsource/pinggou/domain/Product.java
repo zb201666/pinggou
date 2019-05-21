@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -13,7 +16,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zb
- * @since 2019-05-16
+ * @since 2019-05-20
  */
 @TableName("t_product")
 public class Product extends Model<Product> {
@@ -48,8 +51,11 @@ private static final long serialVersionUID=1L;
     /**
      * 商品类型ID
      */
-    @TableField("productType")
-    private Long productType;
+    @TableField("productTypeId")
+    private Long productTypeId;
+
+    @TableField(exist = false)
+    private ProductType productType;
 
     /**
      * 上架时间
@@ -65,6 +71,9 @@ private static final long serialVersionUID=1L;
 
     @TableField("brandId")
     private Long brandId;
+
+    @TableField(exist = false)
+    private Brand brand;
 
     /**
      * 状态
@@ -122,6 +131,16 @@ private static final long serialVersionUID=1L;
     @TableField("badCommentCount")
     private Integer badCommentCount;
 
+    private String medias;
+
+    @TableField("skuProperties")
+    private String skuProperties;
+
+    @TableField(exist = false)
+    private String content;//详情
+    @TableField(exist = false)
+    private String description;//描述
+
 
     public Long getId() {
         return id;
@@ -171,24 +190,26 @@ private static final long serialVersionUID=1L;
         this.code = code;
     }
 
-    public Long getProductType() {
-        return productType;
+    public Long getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setProductType(Long productType) {
-        this.productType = productType;
+    public void setProductTypeId(Long productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
-    public Long getOnSaleTime() {
-        return onSaleTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    public Date getOnSaleTime() {
+        return onSaleTime==null?null:new Date(onSaleTime);
     }
 
     public void setOnSaleTime(Long onSaleTime) {
         this.onSaleTime = onSaleTime;
     }
 
-    public Long getOffSaleTime() {
-        return offSaleTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    public Date getOffSaleTime() {
+        return offSaleTime==null?null:new Date(offSaleTime);
     }
 
     public void setOffSaleTime(Long offSaleTime) {
@@ -291,9 +312,57 @@ private static final long serialVersionUID=1L;
         this.badCommentCount = badCommentCount;
     }
 
+    public String getMedias() {
+        return medias;
+    }
+
+    public void setMedias(String medias) {
+        this.medias = medias;
+    }
+
+    public String getSkuProperties() {
+        return skuProperties;
+    }
+
+    public void setSkuProperties(String skuProperties) {
+        this.skuProperties = skuProperties;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -305,7 +374,7 @@ private static final long serialVersionUID=1L;
         ", name=" + name +
         ", subName=" + subName +
         ", code=" + code +
-        ", productType=" + productType +
+        ", productTypeId=" + productTypeId +
         ", onSaleTime=" + onSaleTime +
         ", offSaleTime=" + offSaleTime +
         ", brandId=" + brandId +
@@ -320,6 +389,8 @@ private static final long serialVersionUID=1L;
         ", goodCommentCount=" + goodCommentCount +
         ", commonCommentCount=" + commonCommentCount +
         ", badCommentCount=" + badCommentCount +
+        ", medias=" + medias +
+        ", skuProperties=" + skuProperties +
         "}";
     }
 }

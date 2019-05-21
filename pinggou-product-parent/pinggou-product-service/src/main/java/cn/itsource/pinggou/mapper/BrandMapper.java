@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * <p>
@@ -27,4 +29,16 @@ public interface BrandMapper extends BaseMapper<Brand> {
      * @return com.baomidou.mybatisplus.core.metadata.IPage<cn.itsource.pinggou.domain.Brand>
      */
     IPage<Brand> selectByQuery(Page<Brand> page, @Param("query") BrandQuery query);
+
+    /**
+     * @author zb
+     * @description 根据id更改logo
+     * @date 2019/5/20
+     * @name updateLogo
+     * @param id
+     * @param logo
+     * @return void
+     */
+    @Update("update t_brand set logo=#{logo} where id=#{id}")
+    void updateLogo(@Param("id") Long id, @Param("logo") String logo);
 }

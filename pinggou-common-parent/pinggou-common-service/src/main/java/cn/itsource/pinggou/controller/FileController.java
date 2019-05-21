@@ -3,13 +3,11 @@ package cn.itsource.pinggou.controller;
 import cn.itsource.pinggou.util.AjaxResult;
 import cn.itsource.pinggou.util.FastDfsApiOpr;
 import org.apache.commons.io.FilenameUtils;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author zb
@@ -58,6 +56,31 @@ public class FileController {
             String group = str.substring(0, str.indexOf("/"));
             String name = str.substring(str.indexOf("/") + 1);
             FastDfsApiOpr.delete(group, name);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("删除失败！！！");
+        }
+    }
+
+    /**
+     * @author zb
+     * @description 批量删除
+     * @date 2019/5/20
+     * @name batchDeleteFile
+     * @param fileIds
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @DeleteMapping(value = "/file/batchDelete")
+    public AjaxResult batchDeleteFile(@RequestParam("fileIds") String fileIds){
+        String[] split = fileIds.split(",");
+        try {
+            for (String fileId : split) {
+                String str = fileId.substring(1);
+                String group = str.substring(0, str.indexOf("/"));
+                String name = str.substring(str.indexOf("/") + 1);
+                FastDfsApiOpr.delete(group, name);
+            }
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();

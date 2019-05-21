@@ -25,4 +25,15 @@ public interface IBrandService extends IService<Brand> {
      * @return com.baomidou.mybatisplus.core.metadata.IPage<cn.itsource.pinggou.domain.Brand>
      */
     IPage<Brand> selectByQuery(Page<Brand> page, BrandQuery query);
+
+    /**
+     * @author zb
+     * @description 根据id更改logo
+     * @date 2019/5/20
+     * @name updateLogo
+     * @param id
+     * @param logo
+     * @return void
+     */
+    void updateLogo(Long id,String logo);
 }
