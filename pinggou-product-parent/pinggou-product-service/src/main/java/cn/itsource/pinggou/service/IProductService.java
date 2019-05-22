@@ -1,12 +1,14 @@
 package cn.itsource.pinggou.service;
 
 import cn.itsource.pinggou.domain.Product;
+import cn.itsource.pinggou.domain.Sku;
 import cn.itsource.pinggou.domain.Specification;
 import cn.itsource.pinggou.query.ProductQuery;
 import cn.itsource.pinggou.util.PageList;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -58,4 +60,34 @@ public interface IProductService extends IService<Product> {
      * @return void
      */
     void saveViewProperties(Product product);
+
+    /**
+     * @author zb
+     * @description 取得商品的sku属性
+     * @date 2019/5/22
+     * @name loadSkuProperties
+     * @param productId
+     * @return java.util.List<cn.itsource.pinggou.domain.Specification>
+     */
+    List<Specification> loadSkuProperties(Long productId);
+
+    /**
+     * @author zb
+     * @description 保存商品sku属性
+     * @date 2019/5/22
+     * @name saveSkuProperties
+     * @param params
+     * @return void
+     */
+    void saveSkuProperties(Map<String, Object> params);
+
+    /**
+     * @author zb
+     * @description 取得商品对应的sku
+     * @date 2019/5/22
+     * @name loadSkus
+     * @param productId
+     * @return java.util.List<cn.itsource.pinggou.domain.Sku>
+     */
+    List<Sku> loadSkus(Long productId);
 }

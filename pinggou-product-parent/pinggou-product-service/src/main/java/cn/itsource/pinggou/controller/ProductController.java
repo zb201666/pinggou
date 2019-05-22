@@ -1,6 +1,7 @@
 package cn.itsource.pinggou.controller;
 
 import cn.itsource.pinggou.domain.Product;
+import cn.itsource.pinggou.domain.Sku;
 import cn.itsource.pinggou.domain.Specification;
 import cn.itsource.pinggou.query.ProductQuery;
 import cn.itsource.pinggou.service.IProductService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ProductController {
@@ -131,6 +133,53 @@ public class ProductController {
     public AjaxResult viewProperties(@RequestBody Product product){
         try {
             productService.saveViewProperties(product);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("保存失败！！！原因是："+e.getMessage());
+        }
+    }
+
+
+    /**
+     * @author zb
+     * @description 获取sku属性
+     * @date 2019/5/22
+     * @name skuProperties
+     * @param productId
+     * @return java.util.List<cn.itsource.pinggou.domain.Specification>
+     */
+    @GetMapping("/product/skuProperties/{id}")
+    public List<Specification> skuProperties(@PathVariable("id") Long productId){
+        return productService.loadSkuProperties(productId);
+    }
+
+    /**
+     * @author zb
+     * @description 获取商品对应的sku
+     * @date 2019/5/22
+     * @name skus
+     * @param productId
+     * @return java.util.List<cn.itsource.pinggou.domain.Sku>
+     */
+    @GetMapping("/product/skus/{id}")
+    public List<Sku> skus(@PathVariable("id") Long productId){
+        return productService.loadSkus(productId);
+    }
+
+
+    /**
+     * @author zb
+     * @description 保存sku属性
+     * @date 2019/5/21
+     * @name skuProperties
+     * @param params
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/product/skuProperties")
+    public AjaxResult skuProperties(@RequestBody Map<String,Object> params){
+        try {
+            productService.saveSkuProperties(params);
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();

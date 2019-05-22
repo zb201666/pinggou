@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -38,6 +40,18 @@ private static final long serialVersionUID=1L;
     /**用于前端显示属性的值显示*/
     @TableField(exist = false)
     private String value;
+
+    /**用于前端sku属性的值显示*/
+    @TableField(exist = false)
+    private List<String> options = new ArrayList<String>();
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
+    }
 
     public String getValue() {
         return value;
