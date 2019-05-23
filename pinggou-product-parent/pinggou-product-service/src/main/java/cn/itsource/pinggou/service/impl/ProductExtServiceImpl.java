@@ -3,6 +3,7 @@ package cn.itsource.pinggou.service.impl;
 import cn.itsource.pinggou.domain.ProductExt;
 import cn.itsource.pinggou.mapper.ProductExtMapper;
 import cn.itsource.pinggou.service.IProductExtService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductExtServiceImpl extends ServiceImpl<ProductExtMapper, ProductExt> implements IProductExtService {
 
+    @Override
+    public ProductExt loadProductExtByProductId(Long productId) {
+        return baseMapper.selectOne(new QueryWrapper<ProductExt>().eq("productId", productId));
+    }
 }

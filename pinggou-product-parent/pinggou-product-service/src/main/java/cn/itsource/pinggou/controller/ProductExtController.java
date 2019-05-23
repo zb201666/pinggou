@@ -82,4 +82,18 @@ public class ProductExtController {
         IPage<ProductExt> productExtIPage = productExtService.page(new Page<>(query.getPage(), query.getSize()));
         return new PageList<>(productExtIPage.getTotal(),productExtIPage.getRecords());
     }
+
+    /**
+     * @author zb
+     * @description 根据商品id查询详情
+     * @date 2019/5/23
+     * @name loadProductExtByProductId
+     * @param productId
+     * @return cn.itsource.pinggou.domain.ProductExt
+     */
+    @GetMapping("/productExt/loadProductExtByProductId")
+    public ProductExt loadProductExtByProductId(Long productId){
+        ProductExt productExt = productExtService.loadProductExtByProductId(productId);
+        return productExt;
+    }
 }

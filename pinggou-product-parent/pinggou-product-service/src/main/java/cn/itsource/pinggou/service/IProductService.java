@@ -90,4 +90,14 @@ public interface IProductService extends IService<Product> {
      * @return java.util.List<cn.itsource.pinggou.domain.Sku>
      */
     List<Sku> loadSkus(Long productId);
+
+    /**
+     * @author zb
+     * @description 商品上架
+     * @date 2019/5/23
+     * @name onSale
+     * @param ids
+     * @return void
+     */
+    void onSale(List<Long> ids);
 }

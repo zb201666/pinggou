@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 /**
  * <p>
  * 商品 Mapper 接口
@@ -40,4 +42,15 @@ public interface ProductMapper extends BaseMapper<Product> {
      */
     @Update("update t_product set medias = #{medias} where id = #{id}")
     void updateMedias(@Param("id") Long id, @Param("medias") String medias);
+
+    /**
+     * @author zb
+     * @description 商品上线
+     * @date 2019/5/23
+     * @name onSale
+     * @param ids
+     * @param onSaleTime
+     * @return void
+     */
+    void onSale(@Param("ids") List<Long> ids, @Param("onSaleTime") Long onSaleTime);
 }

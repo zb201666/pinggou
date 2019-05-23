@@ -1,10 +1,8 @@
 package cn.itsource.pinggou.service.impl;
 
+import cn.itsource.pinggou.client.ElasticSearchClient;
 import cn.itsource.pinggou.domain.*;
-import cn.itsource.pinggou.mapper.ProductExtMapper;
-import cn.itsource.pinggou.mapper.ProductMapper;
-import cn.itsource.pinggou.mapper.SkuMapper;
-import cn.itsource.pinggou.mapper.SpecificationMapper;
+import cn.itsource.pinggou.mapper.*;
 import cn.itsource.pinggou.query.ProductQuery;
 import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.util.PageList;
@@ -14,13 +12,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
@@ -42,15 +39,24 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Autowired
     private SkuMapper skuMapper;
 
+    @Autowired
+    private ElasticSearchClient elasticSearchClient;
+
+    @Autowired
+    private ProductTypeMapper productTypeMapper;
+
+    @Autowired
+    private BrandMapper brandMapper;
+
     @Override
     public void saveSkuProperties(Map<String, Object> params) {
-        Long productId = ((Integer)params.get("productId")).longValue();
+        Long productId = ((Integer) params.get("productId")).longValue();
         Product selectProduct = baseMapper.selectById(productId);
-        selectProduct.setSkuProperties((String)params.get("skuProperties"));
+        selectProduct.setSkuProperties((String) params.get("skuProperties"));
         baseMapper.updateById(selectProduct);
         //将sku属性保存到sku表[先删除原有的，然后再添加]
         skuMapper.delete(new QueryWrapper<Sku>().eq("productId", productId));
-        List<Map<String,String>> skus = (List<Map<String, String>>) params.get("skus");
+        List<Map<String, String>> skus = (List<Map<String, String>>) params.get("skus");
         for (Map<String, String> skuMap : skus) {
             Sku sku = new Sku();
             //设置需要保存的sku对象的属性
@@ -65,7 +71,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             for (Map.Entry<String, String> entry : skuMap.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
-                if(key.equals("price")||key.equals("skuIndex")||key.equals("availableStock")){
+                if (key.equals("price") || key.equals("skuIndex") || key.equals("availableStock")) {
                     continue;
                 }
                 name += value;//拼接skuName属性
@@ -81,10 +87,10 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public List<Specification> loadSkuProperties(Long productId) {
         Product product = baseMapper.selectById(productId);
         String skuProperties = product.getSkuProperties();
-        if(StringUtils.isEmpty(skuProperties)){
+        if (StringUtils.isEmpty(skuProperties)) {
             List<Specification> specifications = specificationMapper.selectList(new QueryWrapper<Specification>().eq("productTypeId", product.getProductTypeId()).eq("isSku", 1));
             return specifications;
-        }else{
+        } else {
             List<Specification> specifications = JSONArray.parseArray(skuProperties, Specification.class);
             return specifications;
         }
@@ -127,6 +133,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     }
 
     @Override
+    @Transactional
     public boolean save(Product product) {
         try {
             super.save(product);
@@ -140,5 +147,66 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public void onSale(List<Long> ids) {
+        //更新数据库的上线时间和状态
+        baseMapper.onSale(ids, new Date().getTime());
+        List<Product> products = baseMapper.selectBatchIds(ids);
+        List<ProductDoc> productDocs = productsToProductDocs(products);
+        //保存到es
+        elasticSearchClient.saveBatch(productDocs);
+    }
+
+
+    private List<ProductDoc> productsToProductDocs(List<Product> products) {
+        List<ProductDoc> productDocs = new ArrayList<>();
+        products.forEach(p -> {
+            productDocs.add(productsToProductDoc(p));
+        });
+        return productDocs;
+    }
+
+    /**
+     * @param product
+     * @return cn.itsource.pinggou.domain.ProductDoc
+     * @author zb
+     * @description product转换为productdoc
+     * @date 2019/5/23
+     * @name productsToProductDoc
+     */
+    private ProductDoc productsToProductDoc(Product product) {
+        ProductDoc productDoc = new ProductDoc();
+        //复制属性值
+        BeanUtils.copyProperties(product, productDoc);
+        productDoc.setOnSaleTime(product.getOnSaleTime().getTime());
+
+        //设置最大值和最小值
+        List<Sku> skus = skuMapper.selectList(new QueryWrapper<Sku>().eq("productId", product.getId()));
+        if(skus.size()>0){
+            Integer minPrice = skus.get(0).getPrice();
+            Integer maxPrice = skus.get(0).getPrice();
+            for (Sku sku : skus) {
+                minPrice = Math.min(sku.getPrice(), minPrice);
+                maxPrice = Math.max(sku.getPrice(), maxPrice);
+            }
+            productDoc.setMinPrice(minPrice);
+            productDoc.setMaxPrice(maxPrice);
+        }
+
+        //设置all关键字
+        ProductType productType = productTypeMapper.selectById(product.getProductTypeId());
+        Brand brand = brandMapper.selectById(product.getBrandId());
+        StringBuffer sb = new StringBuffer();
+        sb.append(product.getName())
+                .append(" ")
+                .append(product.getSubName())
+                .append(" ")
+                .append(productType.getName())
+                .append(" ")
+                .append(brand.getName());
+        productDoc.setAll(sb.toString());
+        return productDoc;
     }
 }

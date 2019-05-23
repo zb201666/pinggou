@@ -10,6 +10,7 @@ import cn.itsource.pinggou.util.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -184,6 +185,26 @@ public class ProductController {
         } catch (Exception e) {
             e.printStackTrace();
             return AjaxResult.me().setSuccess(false).setMessage("保存失败！！！原因是："+e.getMessage());
+        }
+    }
+
+    /**
+     * @author zb
+     * @description 商品上架
+     * @date 2019/5/23
+     * @name onSale
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/product/onSale")
+    public AjaxResult onSale(Long[] ids){
+        try {
+            List<Long> idArr = Arrays.asList(ids);
+            productService.onSale(idArr);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("上架失败！！！原因是"+e.getMessage());
         }
     }
 }
