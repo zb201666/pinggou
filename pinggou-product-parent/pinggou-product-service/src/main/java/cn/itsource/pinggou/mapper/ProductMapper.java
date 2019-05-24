@@ -45,7 +45,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * @author zb
-     * @description 商品上线
+     * @description 商品上架
      * @date 2019/5/23
      * @name onSale
      * @param ids
@@ -53,4 +53,15 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @return void
      */
     void onSale(@Param("ids") List<Long> ids, @Param("onSaleTime") Long onSaleTime);
+
+    /**
+     * @author zb
+     * @description 商品下架
+     * @date 2019/5/24
+     * @name offSale
+     * @param ids
+     * @param offSaleTime
+     * @return void
+     */
+    void offSale(@Param("ids") List<Long> ids, @Param("offSaleTime") Long offSaleTime);
 }

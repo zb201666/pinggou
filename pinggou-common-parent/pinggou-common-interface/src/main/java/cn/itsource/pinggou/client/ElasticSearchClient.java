@@ -66,4 +66,14 @@ public interface ElasticSearchClient {
     @PostMapping("/es/removeBatch")
     AjaxResult removeBatch(@RequestBody List<ProductDoc> productDocs);
 
+    /**
+     * @author zb
+     * @description 根据给定id批量删除
+     * @date 2019/5/24
+     * @name removeBatchByIds
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/es/removeBatchByIds")
+    AjaxResult removeBatchByIds(@RequestBody List<Long> ids);
 }

@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -48,7 +49,68 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Autowired
     private BrandMapper brandMapper;
 
+
+    /**
+     * @author zb
+     * @description 重写删除，删除后要同步到es
+     * @date 2019/5/24
+     * @name removeById
+     * @param id
+     * @return boolean
+     */
     @Override
+    @Transactional
+    public boolean removeById(Serializable id) {
+        Product product = baseMapper.selectById(id);
+        super.removeById(id);
+        if(product.getState() == 1){ // 上架才删除
+            elasticSearchClient.remove(product.getId());
+        }
+        return true;
+    }
+
+    /**
+     * @author zb
+     * @description 重写更新，更新后要同步到es
+     * @date 2019/5/24
+     * @name updateById
+     * @param entity
+     * @return boolean
+     */
+    @Override
+    @Transactional
+    public boolean updateById(Product entity) {
+        super.updateById(entity);
+        Product product = baseMapper.selectById(entity.getId());
+        if(product.getState() == 1){ // 上架的进行同步
+            elasticSearchClient.save(productsToProductDoc(product));
+        }
+        return true;
+    }
+
+    /**
+     * @author zb
+     * @description 重写批量删除
+     * @date 2019/5/24
+     * @name removeByIds
+     * @param idList
+     * @return boolean
+     */
+    @Override
+    @Transactional
+    public boolean removeByIds(Collection<? extends Serializable> idList) {
+        List<Product> products = baseMapper.selectBatchIds(idList);
+        super.removeByIds(idList);
+        products.forEach(p->{
+            if(p.getState() == 1){
+                elasticSearchClient.remove(p.getId());
+            }
+        });
+        return true;
+    }
+
+    @Override
+    @Transactional
     public void saveSkuProperties(Map<String, Object> params) {
         Long productId = ((Integer) params.get("productId")).longValue();
         Product selectProduct = baseMapper.selectById(productId);
@@ -102,6 +164,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     }
 
     @Override
+    @Transactional
     public void saveViewProperties(Product product) {
         Product selectProduct = baseMapper.selectById(product.getId());
         selectProduct.setViewProperties(product.getViewProperties());
@@ -121,6 +184,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     }
 
     @Override
+    @Transactional
     public void updateMedias(Long id, String medias) {
         baseMapper.updateMedias(id, medias);
     }
@@ -150,8 +214,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     }
 
     @Override
+    @Transactional
     public void onSale(List<Long> ids) {
-        //更新数据库的上线时间和状态
+        //更新数据库的上架时间和状态
         baseMapper.onSale(ids, new Date().getTime());
         List<Product> products = baseMapper.selectBatchIds(ids);
         List<ProductDoc> productDocs = productsToProductDocs(products);
@@ -159,6 +224,14 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         elasticSearchClient.saveBatch(productDocs);
     }
 
+    @Override
+    @Transactional
+    public void offSale(List<Long> ids) {
+        //更新数据库的下架时间和状态
+        baseMapper.offSale(ids, new Date().getTime());
+        //批量删除
+        elasticSearchClient.removeBatchByIds(ids);
+    }
 
     private List<ProductDoc> productsToProductDocs(List<Product> products) {
         List<ProductDoc> productDocs = new ArrayList<>();
@@ -180,20 +253,18 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         ProductDoc productDoc = new ProductDoc();
         //复制属性值
         BeanUtils.copyProperties(product, productDoc);
-        productDoc.setOnSaleTime(product.getOnSaleTime().getTime());
+        productDoc.setOnSaleTime(product.getOnSaleTime());
 
         //设置最大值和最小值
         List<Sku> skus = skuMapper.selectList(new QueryWrapper<Sku>().eq("productId", product.getId()));
-        if(skus.size()>0){
-            Integer minPrice = skus.get(0).getPrice();
-            Integer maxPrice = skus.get(0).getPrice();
-            for (Sku sku : skus) {
-                minPrice = Math.min(sku.getPrice(), minPrice);
-                maxPrice = Math.max(sku.getPrice(), maxPrice);
-            }
-            productDoc.setMinPrice(minPrice);
-            productDoc.setMaxPrice(maxPrice);
+        Integer minPrice = (skus != null && skus.size() > 0) ? skus.get(0).getPrice() : 0;
+        Integer maxPrice = (skus != null && skus.size() > 0) ? skus.get(0).getPrice() : 0;
+        for (Sku sku : skus) {
+            minPrice = Math.min(sku.getPrice(), minPrice);
+            maxPrice = Math.max(sku.getPrice(), maxPrice);
         }
+        productDoc.setMinPrice(minPrice);
+        productDoc.setMaxPrice(maxPrice);
 
         //设置all关键字
         ProductType productType = productTypeMapper.selectById(product.getProductTypeId());
@@ -202,10 +273,13 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         sb.append(product.getName())
                 .append(" ")
                 .append(product.getSubName())
-                .append(" ")
-                .append(productType.getName())
-                .append(" ")
-                .append(brand.getName());
+                .append(" ");
+        if (productType != null) {
+            sb.append(productType.getName()).append(" ");
+        }
+        if (brand != null) {
+            sb.append(brand.getName());
+        }
         productDoc.setAll(sb.toString());
         return productDoc;
     }

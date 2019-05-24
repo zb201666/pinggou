@@ -5,6 +5,7 @@ import cn.itsource.pinggou.client.TemplateClient;
 import cn.itsource.pinggou.domain.ProductType;
 import cn.itsource.pinggou.mapper.ProductTypeMapper;
 import cn.itsource.pinggou.service.IProductTypeService;
+import cn.itsource.pinggou.util.StrUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -38,6 +39,9 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     private RedisClient redisClient;
     @Autowired
     private TemplateClient templateClient;
+
+    @Autowired
+    private ProductTypeMapper productTypeMapper;
 
     @Override
     public List<ProductType> loadTree() {
@@ -118,6 +122,7 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
 
 
     @Override
+    @Transactional
     public boolean save(ProductType entity) {
         boolean save = super.save(entity);
         updateRedisAndPage();
@@ -125,6 +130,7 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     }
 
     @Override
+    @Transactional
     public boolean removeById(Serializable id) {
         boolean remove = super.removeById(id);
         updateRedisAndPage();
@@ -132,10 +138,16 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
     }
 
     @Override
+    @Transactional
     public boolean updateById(ProductType entity) {
         boolean update = super.updateById(entity);
         updateRedisAndPage();
         return update;
+    }
+
+    @Override
+    public List<ProductType> selectByPId(Long id) {
+        return productTypeMapper.selectByPId(id);
     }
 
     /**
@@ -209,5 +221,24 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         params.put("targetPath",targetPath);
         //再根据home.vm生成home.html
         templateClient.generateStaticPage(params);
+    }
+
+
+    @Override
+    public List<Map<String, Object>> loadCrumbs(Long productTypeId) {
+        ProductType productType = baseMapper.selectById(productTypeId);
+        String path = productType.getPath().substring(1);
+        List<Long> ids = StrUtils.splitStr2LongArr(path, "\\.");
+        List<Map<String, Object>> maps = new ArrayList<>();
+        ids.forEach(id->{
+            Map<String, Object> map = new HashMap<>();
+            ProductType currentType = baseMapper.selectById(id);
+            //找到当前类型同级别的类型【排除当前类型自身】
+            List<ProductType> otherTypes = baseMapper.selectList(new QueryWrapper<ProductType>().eq("pid", currentType.getPid()).ne("id", currentType.getId()));
+            map.put("currentType", currentType);
+            map.put("otherTypes", otherTypes);
+            maps.add(map);
+        });
+        return maps;
     }
 }

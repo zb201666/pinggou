@@ -100,4 +100,14 @@ public interface IProductService extends IService<Product> {
      * @return void
      */
     void onSale(List<Long> ids);
+
+    /**
+     * @author zb
+     * @description 商品下架
+     * @date 2019/5/24
+     * @name offSale
+     * @param ids
+     * @return void
+     */
+    void offSale(List<Long> ids);
 }

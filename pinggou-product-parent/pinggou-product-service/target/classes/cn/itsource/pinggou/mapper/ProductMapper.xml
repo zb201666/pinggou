@@ -56,6 +56,15 @@
         </foreach>
     </update>
 
+    <update id="offSale">
+        UPDATE t_product
+        SET offSaleTime = #{offSaleTime},state = 0
+        WHERE id IN
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </update>
+
     <sql id="whereSql">
         <where>
             <if test="query.keyword!=null and query.keyword!=''">

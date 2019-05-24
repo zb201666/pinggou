@@ -3,7 +3,7 @@
 <mapper namespace="cn.itsource.pinggou.mapper.ProductTypeMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.itsource.pinggou.domain.ProductType">
+    <resultMap id="BaseResultMap" type="ProductType">
         <id column="id" property="id" />
         <result column="createTime" property="createTime" />
         <result column="updateTime" property="updateTime" />
@@ -17,6 +17,27 @@
         <result column="seoTitle" property="seoTitle" />
         <result column="seoKeywords" property="seoKeywords" />
         <result column="type_template_id" property="typeTemplateId" />
+        <association property="parent" javaType="ProductType">
+            <id column="id" property="pid"></id>
+            <result column="pname" property="name"></result>
+        </association>
     </resultMap>
+
+    <select id="selectOneById" resultMap="BaseResultMap">
+        <include refid="selectSql"></include>
+        WHERE tp.id = #{id}
+    </select>
+
+    <select id="selectByPId" resultMap="BaseResultMap">
+        <include refid="selectSql"></include>
+        WHERE tp.pid = #{id} OR tp.id = #{id}
+    </select>
+
+    <sql id="selectSql">
+        SELECT tp.*,tpt.name pname
+        FROM t_product_type tp
+        LEFT JOIN t_product_type tpt
+        ON tp.pid = tpt.id
+    </sql>
 
 </mapper>

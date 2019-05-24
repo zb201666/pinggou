@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ProductTypeController {
@@ -58,6 +59,13 @@ public class ProductTypeController {
     public ProductType get(@PathVariable("id") Long id)
     {
         return productTypeService.getById(id);
+    }
+
+    //获取
+    @RequestMapping(value = "/productType/getProductType/{id}",method = RequestMethod.GET)
+    public List<ProductType> getOne(@PathVariable("id") Long id)
+    {
+        return productTypeService.selectByPId(id);
     }
 
 
@@ -114,5 +122,18 @@ public class ProductTypeController {
             e.printStackTrace();
             return AjaxResult.me().setSuccess(false).setMessage("操作失败");
         }
+    }
+
+    /**
+     * @author zb
+     * @description 加载类型面包屑
+     * @date 2019/5/24
+     * @name loadCrumbs
+     * @param productTypeId
+     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     */
+    @GetMapping("/productType/loadCrumbs")
+    public List<Map<String,Object>> loadCrumbs(Long productTypeId){
+        return productTypeService.loadCrumbs(productTypeId);
     }
 }

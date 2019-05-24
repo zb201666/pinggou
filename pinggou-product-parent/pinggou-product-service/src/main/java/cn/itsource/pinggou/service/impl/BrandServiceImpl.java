@@ -29,6 +29,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     }
 
     @Override
+    @Transactional
     public void updateLogo(Long id, String logo) {
         baseMapper.updateLogo(id,logo);
     }

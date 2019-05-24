@@ -7,6 +7,8 @@ import cn.itsource.pinggou.query.ProductQuery;
 import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.util.AjaxResult;
 import cn.itsource.pinggou.util.PageList;
+import cn.itsource.pinggou.util.StrUtils;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +31,7 @@ public class ProductController {
     public AjaxResult save(@RequestBody Product product){
         try {
             if(product.getId()!=null){
+                product.setUpdateTime(new Date().getTime());
                 productService.updateById(product);
             }else{
                 product.setCreateTime(new Date().getTime());
@@ -54,6 +57,26 @@ public class ProductController {
         } catch (Exception e) {
         e.printStackTrace();
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+        }
+    }
+
+
+    /**
+     * @author zb
+     * @description 批量删除
+     * @date 2019/5/24
+     * @name deleteBatch
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @RequestMapping(value="/product/batch/{ids}",method=RequestMethod.DELETE)
+    public AjaxResult deleteBatch(@PathVariable("ids") List<Long> ids){
+        try {
+            productService.removeByIds(ids);
+            return AjaxResult.me();
+        } catch (Exception e) {
+        e.printStackTrace();
+            return AjaxResult.me().setMessage("删除失败！"+e.getMessage());
         }
     }
 
@@ -196,15 +219,35 @@ public class ProductController {
      * @param ids
      * @return cn.itsource.pinggou.util.AjaxResult
      */
-    @PostMapping("/product/onSale")
-    public AjaxResult onSale(Long[] ids){
+    @GetMapping("/product/onSale")
+    public AjaxResult onSale(@RequestParam("ids") String ids){
         try {
-            List<Long> idArr = Arrays.asList(ids);
+            List<Long> idArr = StrUtils.splitStr2LongArr(ids);
             productService.onSale(idArr);
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
             return AjaxResult.me().setSuccess(false).setMessage("上架失败！！！原因是"+e.getMessage());
+        }
+    }
+
+    /**
+     * @author zb
+     * @description 商品下架
+     * @date 2019/5/24
+     * @name offSale
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @GetMapping("/product/offSale")
+    public AjaxResult offSale(@RequestParam("ids") String ids){
+        try {
+            List<Long> idArr = StrUtils.splitStr2LongArr(ids);
+            productService.offSale(idArr);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("下架失败！！！原因是"+e.getMessage());
         }
     }
 }

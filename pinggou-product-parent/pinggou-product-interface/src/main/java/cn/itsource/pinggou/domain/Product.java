@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -198,18 +199,16 @@ private static final long serialVersionUID=1L;
         this.productTypeId = productTypeId;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    public Date getOnSaleTime() {
-        return onSaleTime==null?null:new Date(onSaleTime);
+    public Long getOnSaleTime() {
+        return onSaleTime;
     }
 
     public void setOnSaleTime(Long onSaleTime) {
         this.onSaleTime = onSaleTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    public Date getOffSaleTime() {
-        return offSaleTime==null?null:new Date(offSaleTime);
+    public Long getOffSaleTime() {
+        return offSaleTime;
     }
 
     public void setOffSaleTime(Long offSaleTime) {

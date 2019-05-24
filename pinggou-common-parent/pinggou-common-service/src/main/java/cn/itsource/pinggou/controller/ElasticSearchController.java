@@ -102,4 +102,27 @@ public class ElasticSearchController {
             return AjaxResult.me().setSuccess(false).setMessage("删除失败！！！原因是"+e.getMessage());
         }
     };
+
+    /**
+     * @author zb
+     * @description 根据给定id批量删除
+     * @date 2019/5/24
+     * @name removeBatchByIds
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @PostMapping("/es/removeBatchByIds")
+    public  AjaxResult removeBatchByIds(@RequestBody List<Long> ids){
+        try {
+            ids.forEach(id->{
+                if(repository.existsById(id)){
+                    repository.deleteById(id);
+                }
+            });
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("删除失败！！！原因是"+e.getMessage());
+        }
+    }
 }

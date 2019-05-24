@@ -4,6 +4,7 @@ import cn.itsource.pinggou.domain.ProductType;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -34,4 +35,24 @@ public interface IProductTypeService extends IService<ProductType> {
      * @return void
      */
     void generateStaticPage();
+
+    /**
+     * @author zb
+     * @description 根据id查询
+     * @date 2019/5/23
+     * @name selectOneById
+     * @param id
+     * @return cn.itsource.pinggou.domain.ProductType
+     */
+    List<ProductType> selectByPId(Long id);
+
+    /**
+     * @author zb
+     * @description 加载类型面包屑
+     * @date 2019/5/24
+     * @name loadCrumbs
+     * @param productTypeId
+     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     */
+    List<Map<String,Object>> loadCrumbs(Long productTypeId);
 }

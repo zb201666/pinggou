@@ -22,6 +22,20 @@ public class StrUtils {
         return null;
     }
 
+    /**
+     * 把传入的分隔符分隔的字符串转换字符串数组
+     *
+     * @param str
+     * @param split 分隔符
+     * @return
+     */
+    public static String[] splitStr2StrArr(String str, String split) {
+        if (str != null && !str.equals("")) {
+            return str.split(split);
+        }
+        return null;
+    }
+
 
     /**
      * 把逗号分隔字符串转换List的Long
@@ -31,6 +45,25 @@ public class StrUtils {
      */
     public static List<Long> splitStr2LongArr(String str) {
         String[] strings = splitStr2StrArr(str);
+        if (strings == null) return null;
+
+        List<Long> result = new ArrayList<>();
+        for (String string : strings) {
+            result.add(Long.parseLong(string));
+        }
+
+        return result;
+    }
+
+    /**
+     * 把传入的分隔符分隔的字符串转换List的Long
+     *
+     * @param str
+     * @param split 分隔符
+     * @return
+     */
+    public static List<Long> splitStr2LongArr(String str, String split) {
+        String[] strings = splitStr2StrArr(str, split);
         if (strings == null) return null;
 
         List<Long> result = new ArrayList<>();
@@ -64,7 +97,7 @@ public class StrUtils {
         return sb.toString();
     }
 
-    public static String convertPropertiesToHtml(String properties){
+    public static String convertPropertiesToHtml(String properties) {
         //1:容量:6:32GB_4:样式:12:塑料壳
         StringBuilder sBuilder = new StringBuilder();
         String[] propArr = properties.split("_");
