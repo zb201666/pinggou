@@ -30,7 +30,7 @@
 
     <select id="selectByPId" resultMap="BaseResultMap">
         <include refid="selectSql"></include>
-        WHERE tp.pid = #{id} OR tp.id = #{id}
+        WHERE tp.pid = #{id}
     </select>
 
     <sql id="selectSql">

@@ -82,4 +82,17 @@ public class SpecificationController {
         IPage<Specification> specificationIPage = specificationService.page(new Page<>(query.getPage(), query.getSize()));
         return new PageList<>(specificationIPage.getTotal(),specificationIPage.getRecords());
     }
+
+    /**
+     * @author zb
+     * @description 根据商品id查询对应的商品属性
+     * @date 2019/5/25
+     * @name loadSpecificationsByProductTypeId
+     * @param productTypeId
+     * @return cn.itsource.pinggou.util.PageList<cn.itsource.pinggou.domain.Specification>
+     */
+    @RequestMapping(value = "/specification/productType",method = RequestMethod.GET)
+    public List<Specification> loadSpecificationsByProductTypeId(Long productTypeId) {
+        return specificationService.loadSpecificationsByProductTypeId(productTypeId);
+    }
 }

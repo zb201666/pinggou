@@ -3,11 +3,27 @@
 <mapper namespace="cn.itsource.pinggou.mapper.SpecificationMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.itsource.pinggou.domain.Specification">
+    <resultMap id="BaseResultMap" type="Specification">
         <id column="id" property="id" />
         <result column="specName" property="specName" />
         <result column="productTypeId" property="productTypeId" />
         <result column="isSku" property="isSku" />
+        <association property="productType" javaType="ProductType">
+            <id column="productTypeId" property="id"></id>
+            <result column="tpName" property="name"></result>
+        </association>
     </resultMap>
 
+
+    <select id="selectSpecificationsByProductTypeId" resultMap="BaseResultMap" parameterType="Long">
+        <include refid="selectSql"></include>
+        WHERE tsp.productTypeId = #{productTypeId}
+    </select>
+
+    <sql id="selectSql">
+        SELECT tsp.*,tp.name tpName
+        FROM t_specification tsp
+        LEFT JOIN t_product_type tp
+        ON tsp.productTypeId = tp.id
+    </sql>
 </mapper>

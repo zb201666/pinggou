@@ -121,14 +121,39 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
 
 
 
+    /**
+     * @author zb
+     * @description 重写保存方法
+     * @date 2019/5/25
+     * @name save
+     * @param entity
+     * @return boolean
+     */
     @Override
     @Transactional
     public boolean save(ProductType entity) {
         boolean save = super.save(entity);
+        ProductType parent = baseMapper.selectById(entity.getPid());
+        String path = "";
+        if(parent!=null){
+            path = parent.getPath()+entity.getId()+".";
+        }else {
+            path = "."+entity.getId()+".";
+        }
+        entity.setPath(path);
+        baseMapper.updateById(entity);
         updateRedisAndPage();
         return save;
     }
 
+    /**
+     * @author zb
+     * @description 重写根据id删除方法
+     * @date 2019/5/25
+     * @name removeById
+     * @param id
+     * @return boolean
+     */
     @Override
     @Transactional
     public boolean removeById(Serializable id) {
@@ -137,6 +162,30 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         return remove;
     }
 
+    /**
+     * @author zb
+     * @description 重写批量删除
+     * @date 2019/5/25
+     * @name removeByIds
+     * @param idList
+     * @return boolean
+     */
+    @Override
+    @Transactional
+    public boolean removeByIds(Collection<? extends Serializable> idList) {
+        boolean remove = super.removeByIds(idList);
+        updateRedisAndPage();
+        return remove;
+    }
+
+    /**
+     * @author zb
+     * @description 重写根据id更新
+     * @date 2019/5/25
+     * @name updateById
+     * @param entity
+     * @return boolean
+     */
     @Override
     @Transactional
     public boolean updateById(ProductType entity) {

@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,9 +27,11 @@ public class ProductTypeController {
     @RequestMapping(value="/productType",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody ProductType productType){
         try {
-            if(productType.getId()!=null){
+            if(productType.getId()!=null && productType.getPath()!=null){
+                productType.setUpdateTime(new Date().getTime());
                 productTypeService.updateById(productType);
             }else{
+                productType.setCreateTime(new Date().getTime());
                 productTypeService.save(productType);
             }
             return AjaxResult.me();
@@ -51,6 +54,25 @@ public class ProductTypeController {
         } catch (Exception e) {
         e.printStackTrace();
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+        }
+    }
+
+    /**
+     * @author zb
+     * @description 批量删除
+     * @date 2019/5/25
+     * @name deleteBatch
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @RequestMapping(value="/productType/batch/{ids}",method=RequestMethod.DELETE)
+    public AjaxResult deleteBatch(@PathVariable("ids") List<Long> ids){
+        try {
+            productTypeService.removeByIds(ids);
+            return AjaxResult.me();
+        } catch (Exception e) {
+        e.printStackTrace();
+            return AjaxResult.me().setMessage("删除失败！"+e.getMessage());
         }
     }
 

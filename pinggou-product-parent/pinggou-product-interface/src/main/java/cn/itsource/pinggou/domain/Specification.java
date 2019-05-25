@@ -34,6 +34,9 @@ private static final long serialVersionUID=1L;
     @TableField("productTypeId")
     private Long productTypeId;
 
+    @TableField(exist = false)
+    private ProductType productType;
+
     @TableField("isSku")
     private Integer isSku;
 
@@ -96,6 +99,14 @@ private static final long serialVersionUID=1L;
     @Override
     protected Serializable pkVal() {
         return this.id;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
     @Override
