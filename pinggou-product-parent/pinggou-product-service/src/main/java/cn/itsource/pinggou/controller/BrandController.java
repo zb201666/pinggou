@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class BrandController {
@@ -130,5 +131,18 @@ public class BrandController {
             e.printStackTrace();
             return AjaxResult.me().setSuccess(false).setMessage("更新失败！！！");
         }
+    }
+
+    /**
+     * @author zb
+     * @description 根据商品类型编号加载品牌
+     * @date 2019/5/26
+     * @name loadByProductTypeId
+     * @param productTypeId
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     */
+    @GetMapping("/brand/loadByProductTypeId")
+    public Map<String,Object> loadByProductTypeId(Long productTypeId){
+        return brandService.loadByProductTypeId(productTypeId);
     }
 }

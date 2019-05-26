@@ -45,14 +45,4 @@ public interface IProductTypeService extends IService<ProductType> {
      * @return cn.itsource.pinggou.domain.ProductType
      */
     List<ProductType> selectByPId(Long id);
-
-    /**
-     * @author zb
-     * @description 加载类型面包屑
-     * @date 2019/5/24
-     * @name loadCrumbs
-     * @param productTypeId
-     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
-     */
-    List<Map<String,Object>> loadCrumbs(Long productTypeId);
 }

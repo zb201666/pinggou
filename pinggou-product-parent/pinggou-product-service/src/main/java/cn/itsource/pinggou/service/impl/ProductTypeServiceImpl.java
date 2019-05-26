@@ -271,23 +271,4 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         //再根据home.vm生成home.html
         templateClient.generateStaticPage(params);
     }
-
-
-    @Override
-    public List<Map<String, Object>> loadCrumbs(Long productTypeId) {
-        ProductType productType = baseMapper.selectById(productTypeId);
-        String path = productType.getPath().substring(1);
-        List<Long> ids = StrUtils.splitStr2LongArr(path, "\\.");
-        List<Map<String, Object>> maps = new ArrayList<>();
-        ids.forEach(id->{
-            Map<String, Object> map = new HashMap<>();
-            ProductType currentType = baseMapper.selectById(id);
-            //找到当前类型同级别的类型【排除当前类型自身】
-            List<ProductType> otherTypes = baseMapper.selectList(new QueryWrapper<ProductType>().eq("pid", currentType.getPid()).ne("id", currentType.getId()));
-            map.put("currentType", currentType);
-            map.put("otherTypes", otherTypes);
-            maps.add(map);
-        });
-        return maps;
-    }
 }

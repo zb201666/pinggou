@@ -110,4 +110,14 @@ public interface IProductService extends IService<Product> {
      * @return void
      */
     void offSale(List<Long> ids);
+
+    /**
+     * @author zb
+     * @description 加载类型面包屑
+     * @date 2019/5/24
+     * @name loadCrumbs
+     * @param productTypeId
+     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     */
+    List<Map<String,Object>> loadCrumbs(Long productTypeId);
 }

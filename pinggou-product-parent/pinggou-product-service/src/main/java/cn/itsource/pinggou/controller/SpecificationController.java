@@ -53,6 +53,25 @@ public class SpecificationController {
         }
     }
 
+    /**
+     * @author zb
+     * @description 批量删除
+     * @date 2019/5/26
+     * @name delete
+     * @param ids
+     * @return cn.itsource.pinggou.util.AjaxResult
+     */
+    @RequestMapping(value="/specification/batch/{ids}",method=RequestMethod.DELETE)
+    public AjaxResult deleteBatch(@PathVariable("ids") List<Long> ids){
+        try {
+            specificationService.removeByIds(ids);
+            return AjaxResult.me();
+        } catch (Exception e) {
+        e.printStackTrace();
+            return AjaxResult.me().setMessage("删除失败！"+e.getMessage());
+        }
+    }
+
     //获取
     @RequestMapping(value = "/specification/{id}",method = RequestMethod.GET)
     public Specification get(@PathVariable("id") Long id)

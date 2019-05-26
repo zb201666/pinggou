@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Map;
+
 /**
  * <p>
  * 品牌信息 服务类
@@ -36,4 +38,14 @@ public interface IBrandService extends IService<Brand> {
      * @return void
      */
     void updateLogo(Long id,String logo);
+
+    /**
+     * @author zb
+     * @description 根据商品类型编号加载品牌
+     * @date 2019/5/26
+     * @name loadByProductTypeId
+     * @param productTypeId
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     */
+    Map<String,Object> loadByProductTypeId(Long productTypeId);
 }

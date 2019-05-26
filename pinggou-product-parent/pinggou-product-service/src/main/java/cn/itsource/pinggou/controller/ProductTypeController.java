@@ -1,5 +1,6 @@
 package cn.itsource.pinggou.controller;
 
+import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.service.IProductTypeService;
 import cn.itsource.pinggou.domain.ProductType;
 import cn.itsource.pinggou.query.ProductTypeQuery;
@@ -18,6 +19,9 @@ import java.util.Map;
 public class ProductTypeController {
     @Autowired
     public IProductTypeService productTypeService;
+
+    @Autowired
+    private IProductService productService;
 
     /**
     * 保存和修改公用的
@@ -156,6 +160,6 @@ public class ProductTypeController {
      */
     @GetMapping("/productType/loadCrumbs")
     public List<Map<String,Object>> loadCrumbs(Long productTypeId){
-        return productTypeService.loadCrumbs(productTypeId);
+        return productService.loadCrumbs(productTypeId);
     }
 }

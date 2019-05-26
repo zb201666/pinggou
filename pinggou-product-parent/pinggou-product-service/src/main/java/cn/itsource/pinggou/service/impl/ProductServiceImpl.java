@@ -1,22 +1,26 @@
 package cn.itsource.pinggou.service.impl;
 
 import cn.itsource.pinggou.client.ElasticSearchClient;
+import cn.itsource.pinggou.client.TemplateClient;
 import cn.itsource.pinggou.domain.*;
 import cn.itsource.pinggou.mapper.*;
 import cn.itsource.pinggou.query.ProductQuery;
 import cn.itsource.pinggou.service.IProductService;
 import cn.itsource.pinggou.util.PageList;
+import cn.itsource.pinggou.util.StrUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.io.Resources;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
@@ -48,6 +52,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Autowired
     private BrandMapper brandMapper;
+
+    @Autowired
+    private TemplateClient templateClient;
 
 
     /**
@@ -214,12 +221,71 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     }
 
     @Override
+    public List<Map<String, Object>> loadCrumbs(Long productTypeId) {
+        ProductType productType = productTypeMapper.selectById(productTypeId);
+        String path = productType.getPath().substring(1);
+        List<Long> ids = StrUtils.splitStr2LongArr(path, "\\.");
+        List<Map<String, Object>> maps = new ArrayList<>();
+        ids.forEach(id->{
+            Map<String, Object> map = new HashMap<>();
+            ProductType currentType = productTypeMapper.selectById(id);
+            //找到当前类型同级别的类型【排除当前类型自身】
+            List<ProductType> otherTypes = productTypeMapper.selectList(new QueryWrapper<ProductType>().eq("pid", currentType.getPid()).ne("id", currentType.getId()));
+            map.put("currentType", currentType);
+            map.put("otherTypes", otherTypes);
+            maps.add(map);
+        });
+        return maps;
+    }
+
+
+    /**
+     * @author zb
+     * @description 静态化商品详情界面
+     * @date 2019/5/26
+     * @name staticProductDetail
+     * @param product
+     * @return void
+     */
+    private void staticProductDetail(Product product) {
+        Properties properties = null;
+        try {
+            properties = Resources.getResourceAsProperties("template/staticPage.properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String productDetailPath = properties.getProperty("productDetailPath");
+        //模板路径
+        String templatePath = properties.getProperty("productDetailTemplate");
+        //生成的文件的路径
+        String targetPath = productDetailPath +product.getId()+".html";
+        //数据
+        Map<String,Object> model = new HashMap<>();
+        model.put("staticRoot",properties.getProperty("staticRootPath"));
+        model.put("product",product);
+        List<Map<String, Object>> crumbs = this.loadCrumbs(product.getProductTypeId());
+        model.put("crumbs",crumbs);
+        ProductExt productExt = productExtMapper.selectOne(new QueryWrapper<ProductExt>().eq("productId", product.getId()));
+        model.put("productExt",productExt);
+
+        //调用公共的接口
+        Map<String,Object> param = new HashMap<>();
+        param.put("templatePath",templatePath);
+        param.put("targetPath",targetPath);
+        param.put("model",model);
+        templateClient.generateStaticPage(param);
+    }
+
+    @Override
     @Transactional
     public void onSale(List<Long> ids) {
         //更新数据库的上架时间和状态
         baseMapper.onSale(ids, new Date().getTime());
         List<Product> products = baseMapper.selectBatchIds(ids);
         List<ProductDoc> productDocs = productsToProductDocs(products);
+        products.forEach(p->{
+            staticProductDetail(p);
+        });
         //保存到es
         elasticSearchClient.saveBatch(productDocs);
     }
