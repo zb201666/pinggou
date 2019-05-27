@@ -267,7 +267,20 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         model.put("crumbs",crumbs);
         ProductExt productExt = productExtMapper.selectOne(new QueryWrapper<ProductExt>().eq("productId", product.getId()));
         model.put("productExt",productExt);
-
+        //显示属性
+        String viewPropertiesStr = product.getViewProperties();
+        List<Specification> viewProperties = JSONArray.parseArray(viewPropertiesStr, Specification.class);
+        model.put("viewProperties", viewProperties);
+        //sku属性
+        String skuPropertiesStr = product.getSkuProperties();
+        List<Specification> skuProperties = JSONArray.parseArray(skuPropertiesStr, Specification.class);
+        model.put("skuProperties", skuProperties);
+        //sku属性个数
+        model.put("skuCount",(skuProperties!=null&&skuProperties.size()>0)?skuProperties.size():null);
+        //skus属性
+        List<Sku> skuList = skuMapper.selectList(new QueryWrapper<Sku>().eq("productId", product.getId()));
+        String skus = JSONArray.toJSONString(skuList);
+        model.put("skus",skus);
         //调用公共的接口
         Map<String,Object> param = new HashMap<>();
         param.put("templatePath",templatePath);
